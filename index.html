@@ -886,7 +886,7 @@
 
               //Weather Api
             const apikey="1dea2e0ae6e445e4a19174850260608"
-            const apiurl="http://api.weatherapi.com/v1/forecast.json?&days=5&aqi=yes&alerts=no"
+            const apiurl="https://api.weatherapi.com/v1/forecast.json?&days=5&aqi=yes&alerts=no"
             
             async function weatherapi(city){
                  const response=await fetch(apiurl + `&key=${apikey}`+`&q=${city}`)
