@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbaritem{
+            text-decoration: none;
+            color:white;
+            font-size:19px;
+        }
+        .navbar{
+            padding:10px;
+        }
+        .ditem{
+            font-size:19px;
+        }
+        .sec3{
+            margin-top:30px;
+        }
+       .search{
+        min-width: 0;
+        width: max-content;
+       }
+       .sec4{
+        margin-top:20px;
+       }
+       .crasoul{
+        display:flex;
+        justify-content: center;
+        justify-content: space-evenly;
+        overflow-x: auto;
+    
+        scroll-behavior: smooth;
+        anchor-name:--carasoul;
+        scroll-snap-type: x mandatory;
+        gap:3.2em;
+       }
+      .sec6{
+        margin-top:30px;
+      }
+      .d1{
+        height:9rem;
+       flex:0 0 5em;
+        scroll-snap-align:start ;
+       
+      }
+      .crasoul::-webkit-scrollbar{
+        display:none;
+      }
+      .crasoul::scroll-button(right){
+        content:'>';
+        border:none;
+        background-color:#C4F7CA;
+        font-size:3rem;
+        color:#fff;
+        height:9rem;
+        width:40px;
+        /* border-radius: 50%; */
+        padding-bottom:0.1em;
+        cursor: pointer;
+        position:fixed;
+        position-anchor: --carasoul;
+        position-area:right center;
+       
+      }
+       .crasoul::scroll-button(left){
+        content:'<';
+        border:none;
+        background-color:#C4F7CA;
+        font-size:3rem;
+        color:#fff;
+        height:9rem;
+        width:40px;
+        /* border-radius: 50%; */
+        padding-bottom:0.1em;
+        cursor: pointer;
+         position:fixed;
+        position-anchor: --carasoul;
+        position-area:left center;
+       
+      }
+       .crasoul::scroll-button(right):disabled,  .crasoul::scroll-button(left):disabled{
+        opacity: 0.5;
+        cursor:auto;
+       }
+       .sec5{
+        margin-top:30px;
+        font-size:25px;
+        color:#fff;
+        /* font-weight:bold; */
+       }
+       .sec7{
+        margin-top:30px;
+        /* font-size:20px; */
+       }
+       .sec8{
+        margin-top:30px;
+       }
+       /* .Air{
+        display: flex;
+        align-items: center;
+       } */
+       .sec9{
+        margin-top:30px;
+       }
+      /* #air-qualitysec9{
+        display: flex;
+        align-items: center;
+      
+      } */
+    </style>
+</head>
+<body style="background-color: #90CAF9;">
+    
+    <section class="sec1">
+        <div class="container-fluid">
+            <div class="row justify-content-evenly ">
+                <div class="col-12 col-md-10 border border-3 rounded-4" style="background-color:#8DBCC7">
+                    <div class="navbar">  
+                    <a href="#today" class="navbaritem">TODAY</a>
+                    <a href="#hourly" class="navbaritem">HOURLY</a>
+                    <a href="#5day" class="navbaritem">5-DAY</a>
+                    
+                    <a href="#AirQuality" class="navbaritem">AIR QUALITY</a>
+                </div>
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+    
+ <section class="sec2">
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-11 border border-3 rounded-4" style="background-color:#8DBCC7">
+                <div class="navbar">  
+                           <div class="dropdown ">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color:#0D47A1;">
+                            MORE
+                        </button>
+                        <ul class="dropdown-menu" style="background-color: #E3F2FD;">
+                            <li><a class="dropdown-item ditem" href="#5daymob">5-DAY</a></li>
+                            <li><a class="dropdown-item ditem" href="#AirQuality">AIR QUALITY</a></li>
+                        </ul>
+                        </div>
+
+                    <a href="#today" class="navbaritem">TODAY</a>
+                    <a href="#hourly" class="navbaritem">HOURLY</a>
+                 
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+ </section>   
+
+<section class="sec3">
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-11 col-md-10 rounded-4" style="background-color: #59C1BD;">
+                <div class="loc " >
+                  <nav class="navbar " >
+            <div class="container-fluid">
+
+                <span class="CityandState1" style="color:#fff; font-size:17px;">KOTA,RAJASTHAN</span>
+                <span class="templap" style="color:#fff; font-size:17px; ">TEMPERATURE</span> 
+                
+                <form class="d-flex form1" role="search">
+                <input class="form-control search1 me-2" type="search" placeholder="Enter City With State" aria-label="Search"/>
+                <button class="btn btn-outline-light btn1" type="submit">Search</button>
+                 
+              
+                </form>
+            </div>
+            </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="sec4">
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-11 col-md-10 rounded-4" style="background-color: #59C1BD;">
+                <div class="loc " >
+                  <nav class="navbar " >
+            <div class="container-fluid">
+                 
+                          <form class="d-flex" role="search">
+                <input class="form-control me-2 search2" type="search" placeholder="Enter City With State" aria-label="Search"/>
+                <button class="btn btn-outline-light btn2" type="submit">Search</button>
+                </form>
+                <span class="cityandstate2" style="color:#fff; ">KOTA,RAJASTHAN</span>
+                <span class="tempmobsec4" style="color:#fff;">TEMPERATURE</span>
+               
+            </div>
+            </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sec5" id="today">
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-10 col-md-8 ">
+                <div class="currentTemp  text-center">
+                         <span class="currenttempicon"> </span> <br>
+                          <span class="tempsec5" style="font-size:30px; font-weight:bold; ">28 deg Cel</span>
+                        </div>
+                        <div class="realfeel text-center">
+                           <span  >Real Feel : </span> <span class="feelsec5" style="font-size:1em; ">30 deg Cel</span>
+                        </div>
+                </div>
+                <div class="col-10 col-md-8">
+                     <div class="wind text-center">
+                            Wind Speed : <span class="speedsec5">10Km/hr</span>
+                        </div>
+                        <div class="airquality text-center">
+                            Air Quality : <span class="AQisec5">Poor</span>
+                        </div>
+                        <div class="currentapitime text-center"> 12 PM</div>
+                </div>
+                
+            </div>
+        </div>
+    
+</section>
+
+
+
+
+
+
+<section class="sec6" id="hourly">
+
+    <div class="container-fluid mb-3">
+        <div class="row justify-content-evenly">
+            <div class="col-10 text-center"><h1 style="color:#fff;">Today's Hourly Forecast</h1></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-8 bg-light crasoul">
+                <div class="d1 text-center">
+                    <div class="time t1">12 AM</div>
+                    <div class="icon1"></div>
+                    <div class="weather w1">Weather</div>
+                    <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS1"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t2">1 AM</div>
+                     <div class="icon2"></div>
+                    <div class="weather w2">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS2"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t3">2 AM</div>
+                 <div class="icon3"></div>
+                    <div class="weather w3">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS3"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t4">3 AM</div>
+                     <div class="icon4"></div>
+                    <div class="weather w4">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS4"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t5">4 AM</div>
+                     <div class="icon5"></div>
+                    <div class="weather w5">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS5"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t6">5 AM</div>
+                     <div class="icon6"></div>
+                    <div class="weather w6">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS6"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t7">6 AM</div>
+                     <div class="icon7"></div>
+                    <div class="weather w7">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS7"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t8">7 AM</div>
+                 <div class="icon8"></div>
+                    <div class="weather w8">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS8"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center "><div class="time t9">8 AM</div>
+                     <div class="icon9"></div>
+                    <div class="weather w9">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS9"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t10">9 AM</div>
+                     <div class="icon10"></div>
+                    <div class="weather w10">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS10"> 70%</span></div>
+                </div>
+
+                 <div class="d1 text-center"><div class="time t11">10 AM</div>
+                     <div class="icon11"></div>
+                    <div class="weather w11">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS11"> 70%</span></div>
+                </div>
+
+                 <div class="d1 text-center"><div class="time t12">11 AM</div>
+                     <div class="icon12"></div>
+                    <div class="weather w12">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS12"> 70%</span></div>
+                </div>
+            
+                 <div class="d1 text-center"><div class="time t13">12 PM</div>
+                     <div class="icon13"></div>
+                    <div class="weather w13">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS13"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t14">1 PM</div>
+                     <div class="icon14"></div>
+                    <div class="weather w14">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS14"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t15">2 PM</div>
+                     <div class="icon15"></div>
+                    <div class="weather w15">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS15"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t16">3 PM</div>
+                     <div class="icon16"></div>
+                    <div class="weather w16">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS16"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t17">4 PM</div>
+                     <div class="icon17"></div>
+                    <div class="weather w17">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS17"> 70%</span></div>
+                </div>
+
+                 <div class="d1 text-center"><div class="time t18">5 PM</div>
+                     <div class="icon18"></div>
+                    <div class="weather w18">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS18"> 70%</span></div>
+                </div>
+
+                 <div class="d1 text-center"><div class="time t19">6 PM</div>
+                     <div class="icon19"></div>
+                    <div class="weather w19">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS19"> 70%</span></div>
+                </div>
+
+                 <div class="d1 text-center"><div class="time t20">7 PM</div>
+                     <div class="icon20"></div>
+                    <div class="weather w20">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS20"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t21">8 PM</div>
+                     <div class="icon21"></div>
+                    <div class="weather w21">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS21"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t22">9 PM</div>
+                     <div class="icon22"></div>
+                    <div class="weather w22">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS22"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t23">10 PM</div>
+                     <div class="icon23"></div>
+                    <div class="weather w23">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS23"> 70%</span></div>
+                </div>
+
+                <div class="d1 text-center"><div class="time t24">11 PM</div>
+                     <div class="icon24"></div>
+                    <div class="weather w24">Weather</div>
+                     <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> <span class="rainS24"> 70%</span></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sec7" id="5day">
+    <div class="container-fluid mb-3">
+        <div class="row justify-content-evenly">
+            <div class="col-10 text-center"><h1 style="color:#fff;">5 Day Forecast</h1></div>
+        </div>
+    </div>
+   
+   
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-10">
+                <div class="row bg-light  align-items-center rounded-3 " style="padding:7px;">
+                    <div class="col-4 text-center">
+                       <p class="day1">TODAY</p>
+                       <p class="date1">DATE</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <!-- <p>Max Temperature <span>30 deg C</span></p>
+                        <p>MIN Temperature <span>24 deg C</span></p> -->
+                        <p ><span class="maxtemp1">30 degC</span> / <span class="mintemp1">24 degC</span></p>
+                        <p>Humidity : <span class="humid1">20</span></p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+  <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+</svg> : <span class="rain1">70%</span></p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind1">20Km/hr</span></p>
+                    </div>
+                </div>
+
+
+ <div class="row bg-light align-items-center rounded-3 mt-2"  style="padding:7px;">
+                    <div class="col-4 text-center">
+                       <p class="day2">DAY 2</p>
+                       <p class="date2">DATE</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <!-- <p>Max Temperature <span>30 deg C</span></p>
+                        <p>MIN Temperature <span>24 deg C</span></p> -->
+                         <p ><span class="maxtemp2">30 degC</span> / <span class="mintemp2">24 degC</span></p>
+                            <p>Humidity : <span class="humid2">20</span></p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain2">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind2">20Km/hr</span></p>
+
+                    </div>
+</div>
+            
+ <div class="row bg-light align-items-center rounded-3 mt-2"  style="padding:7px;">
+                    <div class="col-4 text-center">
+                       <p class="day3">DAY 3</p>
+                       <p class="date3">DATE</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <!-- <p>Max Temperature <span>30 deg C</span></p>
+                        <p>MIN Temperature <span>24 deg C</span></p> -->
+                         <p ><span class="maxtemp3">30 degC</span> / <span class="mintemp3">24 degC</span></p>
+                            <p>Humidity : <span class="humid3">20</span></p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain3">70%</span></p>
+
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind3">20Km/hr</span></p>
+                    </div>
+</div>
+        
+ <div class="row bg-light align-items-center rounded-3 mt-2"  style="padding:7px;">
+                    <div class="col-4 text-center">
+                       <p class="day4">DAY 4</p>
+                       <p class="date4">DATE</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <!-- <p>Max Temperature <span>30 deg C</span></p>
+                        <p>MIN Temperature <span>24 deg C</span></p> -->
+                         <p ><span class="maxtemp4">30 degC</span> / <span class="mintemp4">24 degC</span></p>
+                            <p>Humidity : <span class="humid4">20</span></p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain4">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind4">20Km/hr</span></p>
+
+                    </div>
+</div>
+        
+ <div class="row bg-light align-items-center rounded-3 mt-2"  style="padding:7px;">
+                    <div class="col-4 text-center">
+                       <p class="day5">DAY 5</p>
+                       <p class="date5">DATE</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <!-- <p>Max Temperature <span>30 deg C</span></p>
+                        <p>MIN Temperature <span>24 deg C</span></p> -->
+                         <p ><span class="maxtemp5">30 degC</span> / <span class="mintemp5">24 degC</span></p>
+                            <p>Humidity : <span class="humid5">20</span></p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain5">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind5">20Km/hr</span></p>
+
+                    </div>
+</div>
+        
+
+        
+
+        
+ 
+        
+ 
+        
+
+        
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="sec8" id="5daymob">
+
+    <div class="container-fluid mb-3">
+        <div class="row justify-content-evenly">
+            <div class="col-10 text-center"><h1 style="color:#fff;">5 Day Forecast</h1></div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-evenly">
+            <div class="col-11">
+                <div class="row bg-light rounded-3 ">
+                    <div class="col-6 text-center">
+                        <p class="Day1">TODAY</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="Date1">DATE</p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p><span class="Maxtemp1">30 deg C</span> / <span class="Mintemp1">24 deg C</span></p>
+                         <p>Humidity : <span class="humid1mob">20</span></p>
+                    </div>
+                    <div class=" col-12 text-center rain">
+                          <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain1mob">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind1mob">20Km/hr</span></p>
+                    </div>
+                </div>
+
+                 <div class="row bg-light rounded-3 mt-2">
+                    <div class="col-6 text-center">
+                        <p class="Day2">DAY 2</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="Date2">DATE</p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p><span class="Maxtemp2">30 deg C</span> / <span class="Mintemp2">24 deg C</span></p>
+                         <p>Humidity : <span class="humid2mob">20</span></p>
+                    </div>
+                    <div class=" col-12 text-center rain">
+                          <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain2mob">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind2mob">20Km/hr</span></p>
+                    </div>
+                </div>
+
+                <div class="row bg-light rounded-3 mt-2">
+                    <div class="col-6 text-center">
+                        <p class="Day3">DAY 3</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="Date3">DATE</p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p><span class="Maxtemp3">30 deg C</span> / <span class="Mintemp3">24 deg C</span></p>
+                         <p>Humidity : <span class="humid3mob">20</span></p>
+                    </div>
+                    <div class=" col-12 text-center rain">
+                          <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain3mob">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind3mob">20Km/hr</span></p>
+                    </div>
+                </div>
+
+                <div class="row bg-light rounded-3 mt-2">
+                    <div class="col-6 text-center">
+                        <p class="Day4">DAY 4</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="Date4">DATE</p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p><span class="Maxtemp4">30 deg C</span> / <span class="Mintemp4">24 deg C</span></p>
+                         <p>Humidity : <span class="humid4mob">20</span></p>
+                    </div>
+                    <div class=" col-12 text-center rain">
+                          <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain4mob">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind4mob">20Km/hr</span></p>
+                    </div>
+                </div>
+
+                <div class="row bg-light rounded-3 mt-2">
+                    <div class="col-6 text-center">
+                        <p class="Day5">DAY 5</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="Date5">DATE</p>
+                    </div>
+                    <div class="col-12 text-center">
+                        <p><span class="Maxtemp5">30 deg C</span> / <span class="Mintemp5">24 deg C</span></p>
+                         <p>Humidity : <span class="humid5mob">20</span></p>
+                    </div>
+                    <div class=" col-12 text-center rain">
+                          <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-droplet" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0q.164.544.371 1.038c.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8m.413 1.021A31 31 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                        <path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87z"/>
+                        </svg> : <span class="rain5mob">70%</span></p>
+                        <p><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16">
+  <path d="M12.5 2A2.5 2.5 0 0 0 10 4.5a.5.5 0 0 1-1 0A3.5 3.5 0 1 1 12.5 8H.5a.5.5 0 0 1 0-1h12a2.5 2.5 0 0 0 0-5m-7 1a1 1 0 0 0-1 1 .5.5 0 0 1-1 0 2 2 0 1 1 2 2h-5a.5.5 0 0 1 0-1h5a1 1 0 0 0 0-2M0 9.5A.5.5 0 0 1 .5 9h10.042a3 3 0 1 1-3 3 .5.5 0 0 1 1 0 2 2 0 1 0 2-2H.5a.5.5 0 0 1-.5-.5"/>
+</svg> : <span class="wind5mob">20Km/hr</span></p>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="sec9 mb-3 " id="AirQuality">
+
+     <div class="container-fluid mb-3">
+        <div class="row justify-content-evenly">
+            <div class="col-10 text-center"><h1 style="color:#fff;">AIR QUALITY</h1></div>
+        </div>
+    </div>
+
+    <div class="container-fluid" >
+        <div class="row justify-content-evenly">
+        <div class="col-10 rounded-3" style="background-color: #E3F2FD;">
+            <div class="row justify-content-evenly">
+                   <div class="col-5  text-center p-2 " id="air-qualitysec9">
+               <div> <p class="aday">TODAY</p></div>
+              <div>  <p class="adate">DATE</p></div>
+                <div style="font-size:30px;"><strong><p class="aqi-index">AQI INDEX</p></strong>
+                   
+                </div>
+            </div>
+            <div class="col-7 col-md-4  Air">
+            <div> <p style="font-size:22px;">PM<sub>2.5</sub> : <span class="Pm25" style="font-size:20px;"> 20</span></p></div>
+             <div> <p style="font-size:22px;">PM<sub>10</sub> : <span class="Pm100" style="font-size:20px;"> 20</span></p></div>
+             <div> <p style="font-size:22px;">NO<sub>2</sub> : <span class="No21" style="font-size:20px;"> 20</span></p></div>
+              <div> <p style="font-size:22px;">O<sub>3</sub> : <span class="O31" style="font-size:20px;"> 20</span></p></div>
+              
+            </div>
+            </div>
+        </div>
+         
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+    <script>
+        const navbar=document.querySelector(".sec1")
+        const loc=document.querySelector(".sec3")
+        const dayweather=document.querySelector(".sec7")
+            function screensize(){
+                if(window.innerWidth>=768){
+                    navbar.style.display="block"
+                    loc.style.display="block"
+                    dayweather.style.display="block"
+                }
+                else{
+                    navbar.style.display="none"
+                    loc.style.display="none"
+                    dayweather.style.display="none"
+                  
+                }
+            }
+            screensize()
+            window.addEventListener("resize",screensize)
+
+
+            const dropdown=document.querySelector(".sec2")
+            const search=document.querySelector(".sec4")
+            const dayweather2=document.querySelector(".sec8")
+             function dropdownScreenSize(){
+                if(window.innerWidth>=768){
+                dropdown.style.display="none"
+                search.style.display="none"
+                dayweather2.style.display="none"
+                }
+                else{
+                    dropdown.style.display="block"
+                    search.style.display="block"
+                     dayweather2.style.display="block"
+                }
+            }
+            dropdownScreenSize()
+            window.addEventListener("resize",dropdownScreenSize)
+
+           
+            const date=new Date()
+            document.querySelector(".day1").innerHTML=date.toLocaleDateString("us-en", {weekday:"long"})
+             
+            document.querySelector(".date1").innerHTML=date.toLocaleDateString("in-en", {dateStyle:"short"})
+
+             document.querySelector(".Date1").innerHTML=date.toLocaleDateString("in-en", {dateStyle:"short"})
+              document.querySelector(".Day1").innerHTML=date.toLocaleDateString("us-en", {weekday:"long"})
+
+             document.querySelector(".adate").innerHTML=date.toLocaleDateString("in-en", {dateStyle:"short"})
+             document.querySelector(".aday").innerHTML=date.toLocaleDateString("us-en", {weekday:"long"})
+         
+
+
+             const tommorow=new Date()
+             tommorow.setDate(date.getDate()+1)
+             document.querySelector(".day2").innerHTML=tommorow.toLocaleDateString("us-en",{weekday:"long"})
+             document.querySelector(".date2").innerHTML=tommorow.toLocaleDateString("in-en",{dateStyle:"short"})
+             document.querySelector(".Date2").innerHTML=tommorow.toLocaleDateString("in-en", {dateStyle:"short"})
+              document.querySelector(".Day2").innerHTML=tommorow.toLocaleDateString("us-en", {weekday:"long"})
+              
+              
+             
+             const day3=new Date()
+             day3.setDate(date.getDate()+2)
+               document.querySelector(".day3").innerHTML=day3.toLocaleDateString("us-en",{weekday:"long"})
+             document.querySelector(".date3").innerHTML=day3.toLocaleDateString("in-en",{dateStyle:"short"})
+
+             document.querySelector(".Date3").innerHTML=day3.toLocaleDateString("in-en", {dateStyle:"short"})
+              document.querySelector(".Day3").innerHTML=day3.toLocaleDateString("us-en", {weekday:"long"})
+
+             const day4=new Date()
+             day4.setDate(date.getDate()+3)
+               document.querySelector(".day4").innerHTML=day4.toLocaleDateString("us-en",{weekday:"long"})
+             document.querySelector(".date4").innerHTML=day4.toLocaleDateString("in-en",{dateStyle:"short"})
+
+             document.querySelector(".Date4").innerHTML=day4.toLocaleDateString("in-en", {dateStyle:"short"})
+              document.querySelector(".Day4").innerHTML=day4.toLocaleDateString("us-en", {weekday:"long"})
+
+              const day5=new Date()
+             day5.setDate(date.getDate()+4)
+               document.querySelector(".day5").innerHTML=day5.toLocaleDateString("us-en",{weekday:"long"})
+             document.querySelector(".date5").innerHTML=day5.toLocaleDateString("in-en",{dateStyle:"short"})
+
+             document.querySelector(".Date5").innerHTML=day5.toLocaleDateString("in-en", {dateStyle:"short"})
+              document.querySelector(".Day5").innerHTML=day5.toLocaleDateString("us-en", {weekday:"long"})
+
+           
+              
+
+
+
+              //Weather Api
+            const apikey="1dea2e0ae6e445e4a19174850260608"
+            const apiurl="http://api.weatherapi.com/v1/forecast.json?&days=5&aqi=yes&alerts=no"
+            
+            async function weatherapi(city){
+                 const response=await fetch(apiurl + `&key=${apikey}`+`&q=${city}`)
+                 const data=await response.json()
+                document.querySelector(".currenttempicon").innerHTML= `<img src="${data.current.condition.icon}" height="100px" width="100px" >` 
+                document.querySelector(".templap").innerHTML=Math.round(data.current.temp_c)+ "°C"
+                document.querySelector(".tempsec5").innerHTML=Math.round(data.current.temp_c)+ "°C"
+                document.querySelector(".feelsec5").innerHTML=Math.round(data.current.feelslike_c)+ "°C"
+                document.querySelector(".speedsec5").innerHTML=Math.round(data.current.wind_kph)+ "km/h"
+
+                //local time
+                const locdate = new Date(data.location.localtime);
+
+                const time12 = locdate.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+                });
+               
+                document.querySelector(".currentapitime").innerHTML=time12
+
+                const aqi=data.current.air_quality["us-epa-index"]
+                        const levels = [
+                                            "",
+                                            "Good",
+                                            "Moderate",
+                                            "Unhealthy for Sensitive Groups",
+                                            "Unhealthy",
+                                            "Very Unhealthy",
+                                            "Hazardous"
+                                        ];
+                document.querySelector(".AQisec5").innerHTML=levels[aqi]  
+
+                document.querySelector(".icon1").innerHTML=`<img src="${data.forecast.forecastday[0].hour[0].condition.icon}"  >`
+                document.querySelector(".w1").innerHTML=data.forecast.forecastday[0].hour[0].temp_c+"°C"
+                document.querySelector(".rainS1").innerHTML=data.forecast.forecastday[0].hour[0].chance_of_rain+"%"
+                
+                 document.querySelector(".icon2").innerHTML=`<img src="${data.forecast.forecastday[0].hour[1].condition.icon}"  >`
+                document.querySelector(".w2").innerHTML=data.forecast.forecastday[0].hour[1].temp_c+"°C"
+                document.querySelector(".rainS2").innerHTML=data.forecast.forecastday[0].hour[1].chance_of_rain+"%"
+
+                 document.querySelector(".icon3").innerHTML=`<img src="${data.forecast.forecastday[0].hour[2].condition.icon}"  >`
+                document.querySelector(".w3").innerHTML=data.forecast.forecastday[0].hour[2].temp_c+"°C"
+                document.querySelector(".rainS3").innerHTML=data.forecast.forecastday[0].hour[2].chance_of_rain+"%"
+
+                document.querySelector(".icon4").innerHTML=`<img src="${data.forecast.forecastday[0].hour[3].condition.icon}"  >`
+                document.querySelector(".w4").innerHTML=data.forecast.forecastday[0].hour[3].temp_c+"°C"
+                document.querySelector(".rainS4").innerHTML=data.forecast.forecastday[0].hour[3].chance_of_rain+"%"
+
+                document.querySelector(".icon5").innerHTML=`<img src="${data.forecast.forecastday[0].hour[4].condition.icon}"  >`
+                document.querySelector(".w5").innerHTML=data.forecast.forecastday[0].hour[4].temp_c+"°C"
+                document.querySelector(".rainS5").innerHTML=data.forecast.forecastday[0].hour[4].chance_of_rain+"%"
+
+                document.querySelector(".icon6").innerHTML=`<img src="${data.forecast.forecastday[0].hour[5].condition.icon}"  >`
+                document.querySelector(".w6").innerHTML=data.forecast.forecastday[0].hour[5].temp_c+"°C"
+                document.querySelector(".rainS6").innerHTML=data.forecast.forecastday[0].hour[5].chance_of_rain+"%"
+
+                document.querySelector(".icon7").innerHTML=`<img src="${data.forecast.forecastday[0].hour[6].condition.icon}"  >`
+                document.querySelector(".w7").innerHTML=data.forecast.forecastday[0].hour[6].temp_c+"°C"
+                document.querySelector(".rainS7").innerHTML=data.forecast.forecastday[0].hour[6].chance_of_rain+"%"
+
+                document.querySelector(".icon8").innerHTML=`<img src="${data.forecast.forecastday[0].hour[7].condition.icon}"  >`
+                document.querySelector(".w8").innerHTML=data.forecast.forecastday[0].hour[7].temp_c+"°C"
+                document.querySelector(".rainS8").innerHTML=data.forecast.forecastday[0].hour[7].chance_of_rain+"%"
+
+                document.querySelector(".icon9").innerHTML=`<img src="${data.forecast.forecastday[0].hour[8].condition.icon}"  >`
+                document.querySelector(".w9").innerHTML=data.forecast.forecastday[0].hour[8].temp_c+"°C"
+                document.querySelector(".rainS9").innerHTML=data.forecast.forecastday[0].hour[8].chance_of_rain+"%"
+
+                document.querySelector(".icon10").innerHTML=`<img src="${data.forecast.forecastday[0].hour[9].condition.icon}"  >`
+                document.querySelector(".w10").innerHTML=data.forecast.forecastday[0].hour[9].temp_c+"°C"
+                document.querySelector(".rainS10").innerHTML=data.forecast.forecastday[0].hour[9].chance_of_rain+"%"
+
+                document.querySelector(".icon11").innerHTML=`<img src="${data.forecast.forecastday[0].hour[10].condition.icon}"  >`
+                document.querySelector(".w11").innerHTML=data.forecast.forecastday[0].hour[10].temp_c+"°C"
+                document.querySelector(".rainS11").innerHTML=data.forecast.forecastday[0].hour[10].chance_of_rain+"%"
+
+                document.querySelector(".icon12").innerHTML=`<img src="${data.forecast.forecastday[0].hour[11].condition.icon}"  >`
+                document.querySelector(".w12").innerHTML=data.forecast.forecastday[0].hour[11].temp_c+"°C"
+                document.querySelector(".rainS12").innerHTML=data.forecast.forecastday[0].hour[11].chance_of_rain+"%"
+
+                  document.querySelector(".icon13").innerHTML=`<img src="${data.forecast.forecastday[0].hour[12].condition.icon}"  >`
+                document.querySelector(".w13").innerHTML=data.forecast.forecastday[0].hour[12].temp_c+"°C"
+                document.querySelector(".rainS13").innerHTML=data.forecast.forecastday[0].hour[12].chance_of_rain+"%"
+
+                      document.querySelector(".icon14").innerHTML=`<img src="${data.forecast.forecastday[0].hour[13].condition.icon}"  >`
+                document.querySelector(".w14").innerHTML=data.forecast.forecastday[0].hour[13].temp_c+"°C"
+                document.querySelector(".rainS14").innerHTML=data.forecast.forecastday[0].hour[13].chance_of_rain+"%"
+
+                  document.querySelector(".icon15").innerHTML=`<img src="${data.forecast.forecastday[0].hour[14].condition.icon}"  >`
+                document.querySelector(".w15").innerHTML=data.forecast.forecastday[0].hour[14].temp_c+"°C"
+                document.querySelector(".rainS15").innerHTML=data.forecast.forecastday[0].hour[14].chance_of_rain+"%"
+
+                  document.querySelector(".icon16").innerHTML=`<img src="${data.forecast.forecastday[0].hour[15].condition.icon}"  >`
+                document.querySelector(".w16").innerHTML=data.forecast.forecastday[0].hour[15].temp_c+"°C"
+                document.querySelector(".rainS16").innerHTML=data.forecast.forecastday[0].hour[15].chance_of_rain+"%"
+
+                      document.querySelector(".icon17").innerHTML=`<img src="${data.forecast.forecastday[0].hour[16].condition.icon}"  >`
+                document.querySelector(".w17").innerHTML=data.forecast.forecastday[0].hour[16].temp_c+"°C"
+                document.querySelector(".rainS17").innerHTML=data.forecast.forecastday[0].hour[16].chance_of_rain+"%"
+
+                  document.querySelector(".icon18").innerHTML=`<img src="${data.forecast.forecastday[0].hour[17].condition.icon}"  >`
+                document.querySelector(".w18").innerHTML=data.forecast.forecastday[0].hour[17].temp_c+"°C"
+                document.querySelector(".rainS18").innerHTML=data.forecast.forecastday[0].hour[17].chance_of_rain+"%"
+
+                  document.querySelector(".icon19").innerHTML=`<img src="${data.forecast.forecastday[0].hour[18].condition.icon}"  >`
+                document.querySelector(".w19").innerHTML=data.forecast.forecastday[0].hour[18].temp_c+"°C"
+                document.querySelector(".rainS19").innerHTML=data.forecast.forecastday[0].hour[18].chance_of_rain+"%"
+
+                  document.querySelector(".icon20").innerHTML=`<img src="${data.forecast.forecastday[0].hour[19].condition.icon}"  >`
+                document.querySelector(".w20").innerHTML=data.forecast.forecastday[0].hour[19].temp_c+"°C"
+                document.querySelector(".rainS20").innerHTML=data.forecast.forecastday[0].hour[19].chance_of_rain+"%"
+
+                      document.querySelector(".icon21").innerHTML=`<img src="${data.forecast.forecastday[0].hour[20].condition.icon}"  >`
+                document.querySelector(".w21").innerHTML=data.forecast.forecastday[0].hour[20].temp_c+"°C"
+                document.querySelector(".rainS21").innerHTML=data.forecast.forecastday[0].hour[20].chance_of_rain+"%"
+
+                
+                      document.querySelector(".icon22").innerHTML=`<img src="${data.forecast.forecastday[0].hour[21].condition.icon}"  >`
+                document.querySelector(".w22").innerHTML=data.forecast.forecastday[0].hour[21].temp_c+"°C"
+                document.querySelector(".rainS22").innerHTML=data.forecast.forecastday[0].hour[21].chance_of_rain+"%"
+
+                
+                      document.querySelector(".icon23").innerHTML=`<img src="${data.forecast.forecastday[0].hour[22].condition.icon}"  >`
+                document.querySelector(".w23").innerHTML=data.forecast.forecastday[0].hour[22].temp_c+"°C"
+                document.querySelector(".rainS23").innerHTML=data.forecast.forecastday[0].hour[22].chance_of_rain+"%"
+
+                
+                      document.querySelector(".icon24").innerHTML=`<img src="${data.forecast.forecastday[0].hour[23].condition.icon}"  >`
+                document.querySelector(".w24").innerHTML=data.forecast.forecastday[0].hour[23].temp_c+"°C"
+                document.querySelector(".rainS24").innerHTML=data.forecast.forecastday[0].hour[23].chance_of_rain+"%"
+
+
+                // 5 Day forecast
+                //Day1
+                document.querySelector(".maxtemp1").innerHTML=data.forecast.forecastday[0].day.maxtemp_c +"°C"
+                document.querySelector(".mintemp1").innerHTML=data.forecast.forecastday[0].day.mintemp_c +"°C"
+                document.querySelector(".wind1").innerHTML=data.forecast.forecastday[0].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid1").innerHTML=data.forecast.forecastday[0].day.avghumidity+ "%"
+                document.querySelector(".rain1").innerHTML=data.forecast.forecastday[0].day.daily_chance_of_rain +"%"
+                //Day2
+                 document.querySelector(".maxtemp2").innerHTML=data.forecast.forecastday[1].day.maxtemp_c +"°C"
+                document.querySelector(".mintemp2").innerHTML=data.forecast.forecastday[1].day.mintemp_c +"°C"
+                document.querySelector(".wind2").innerHTML=data.forecast.forecastday[1].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid2").innerHTML=data.forecast.forecastday[1].day.avghumidity+ "%"
+                document.querySelector(".rain2").innerHTML=data.forecast.forecastday[1].day.daily_chance_of_rain +"%"
+                //Day3
+                 document.querySelector(".maxtemp3").innerHTML=data.forecast.forecastday[2].day.maxtemp_c +"°C"
+                document.querySelector(".mintemp3").innerHTML=data.forecast.forecastday[2].day.mintemp_c +"°C"
+                document.querySelector(".wind3").innerHTML=data.forecast.forecastday[2].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid3").innerHTML=data.forecast.forecastday[2].day.avghumidity+ "%"
+                document.querySelector(".rain3").innerHTML=data.forecast.forecastday[2].day.daily_chance_of_rain +"%"
+                //Day4
+                 document.querySelector(".maxtemp4").innerHTML=data.forecast.forecastday[3].day.maxtemp_c +"°C"
+                document.querySelector(".mintemp4").innerHTML=data.forecast.forecastday[3].day.mintemp_c +"°C"
+                document.querySelector(".wind4").innerHTML=data.forecast.forecastday[3].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid4").innerHTML=data.forecast.forecastday[3].day.avghumidity+ "%"
+                document.querySelector(".rain4").innerHTML=data.forecast.forecastday[3].day.daily_chance_of_rain +"%"
+                //Day5
+                 document.querySelector(".maxtemp5").innerHTML=data.forecast.forecastday[4].day.maxtemp_c +"°C"
+                document.querySelector(".mintemp5").innerHTML=data.forecast.forecastday[4].day.mintemp_c +"°C"
+                document.querySelector(".wind5").innerHTML=data.forecast.forecastday[4].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid5").innerHTML=data.forecast.forecastday[4].day.avghumidity+ "%"
+                document.querySelector(".rain5").innerHTML=data.forecast.forecastday[4].day.daily_chance_of_rain +"%"
+
+                // Air quality
+                const aqiIndex=data.forecast.forecastday[0].day.air_quality["us-epa-index"]
+                  document.querySelector(".aqi-index").innerHTML=levels[aqiIndex] 
+                 document.querySelector(".Pm25").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["pm2_5"])+ "µg/m<sup>3</sup>"
+                  document.querySelector(".Pm100").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["pm10"])+"µg/m<sup>3</sup>"
+                   document.querySelector(".No21").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["no2"])+"µg/m<sup>3</sup>"
+                    document.querySelector(".O31").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["o3"])+"µg/m<sup>3</sup>"
+               
+               
+            }
+
+            //`<img src="${data.current.condition.icon}" >` 
+
+            //Async function for mobile section
+            async function weatherapimob(city){
+                 const response=await fetch(apiurl + `&key=${apikey}`+`&q=${city}`)
+                 const data=await response.json()
+                document.querySelector(".currenttempicon").innerHTML= `<img src="${data.current.condition.icon}" height="100px" width="100px" >` 
+                document.querySelector(".tempmobsec4").innerHTML=Math.round(data.current.temp_c)+ "°C"
+                document.querySelector(".tempsec5").innerHTML=Math.round(data.current.temp_c)+ "°C"
+                document.querySelector(".feelsec5").innerHTML=Math.round(data.current.feelslike_c)+ "°C"
+                document.querySelector(".speedsec5").innerHTML=Math.round(data.current.wind_kph)+ "km/h"
+
+                 const locdate = new Date(data.location.localtime);
+
+                const time12 = locdate.toLocaleTimeString("en-US", {
+                hour: "numeric",
+                minute: "2-digit",
+                hour12: true,
+                });
+               
+                document.querySelector(".currentapitime").innerHTML=time12
+
+                const aqi=data.current.air_quality["us-epa-index"]
+                        const levels = [
+                                            "",
+                                            "Good",
+                                            "Moderate",
+                                            "Unhealthy for Sensitive Groups",
+                                            "Unhealthy",
+                                            "Very Unhealthy",
+                                            "Hazardous"
+                                        ];
+                document.querySelector(".AQisec5").innerHTML=levels[aqi]  
+
+                document.querySelector(".icon1").innerHTML=`<img src="${data.forecast.forecastday[0].hour[0].condition.icon}"  >`
+                document.querySelector(".w1").innerHTML=data.forecast.forecastday[0].hour[0].temp_c+"°C"
+                document.querySelector(".rainS1").innerHTML=data.forecast.forecastday[0].hour[0].chance_of_rain+"%"
+                
+                 document.querySelector(".icon2").innerHTML=`<img src="${data.forecast.forecastday[0].hour[1].condition.icon}"  >`
+                document.querySelector(".w2").innerHTML=data.forecast.forecastday[0].hour[1].temp_c+"°C"
+                document.querySelector(".rainS2").innerHTML=data.forecast.forecastday[0].hour[1].chance_of_rain+"%"
+
+                 document.querySelector(".icon3").innerHTML=`<img src="${data.forecast.forecastday[0].hour[2].condition.icon}"  >`
+                document.querySelector(".w3").innerHTML=data.forecast.forecastday[0].hour[2].temp_c+"°C"
+                document.querySelector(".rainS3").innerHTML=data.forecast.forecastday[0].hour[2].chance_of_rain+"%"
+
+                document.querySelector(".icon4").innerHTML=`<img src="${data.forecast.forecastday[0].hour[3].condition.icon}"  >`
+                document.querySelector(".w4").innerHTML=data.forecast.forecastday[0].hour[3].temp_c+"°C"
+                document.querySelector(".rainS4").innerHTML=data.forecast.forecastday[0].hour[3].chance_of_rain+"%"
+
+                document.querySelector(".icon5").innerHTML=`<img src="${data.forecast.forecastday[0].hour[4].condition.icon}"  >`
+                document.querySelector(".w5").innerHTML=data.forecast.forecastday[0].hour[4].temp_c+"°C"
+                document.querySelector(".rainS5").innerHTML=data.forecast.forecastday[0].hour[4].chance_of_rain+"%"
+
+                document.querySelector(".icon6").innerHTML=`<img src="${data.forecast.forecastday[0].hour[5].condition.icon}"  >`
+                document.querySelector(".w6").innerHTML=data.forecast.forecastday[0].hour[5].temp_c+"°C"
+                document.querySelector(".rainS6").innerHTML=data.forecast.forecastday[0].hour[5].chance_of_rain+"%"
+
+                document.querySelector(".icon7").innerHTML=`<img src="${data.forecast.forecastday[0].hour[6].condition.icon}"  >`
+                document.querySelector(".w7").innerHTML=data.forecast.forecastday[0].hour[6].temp_c+"°C"
+                document.querySelector(".rainS7").innerHTML=data.forecast.forecastday[0].hour[6].chance_of_rain+"%"
+
+                document.querySelector(".icon8").innerHTML=`<img src="${data.forecast.forecastday[0].hour[7].condition.icon}"  >`
+                document.querySelector(".w8").innerHTML=data.forecast.forecastday[0].hour[7].temp_c+"°C"
+                document.querySelector(".rainS8").innerHTML=data.forecast.forecastday[0].hour[7].chance_of_rain+"%"
+
+                document.querySelector(".icon9").innerHTML=`<img src="${data.forecast.forecastday[0].hour[8].condition.icon}"  >`
+                document.querySelector(".w9").innerHTML=data.forecast.forecastday[0].hour[8].temp_c+"°C"
+                document.querySelector(".rainS9").innerHTML=data.forecast.forecastday[0].hour[8].chance_of_rain+"%"
+
+                document.querySelector(".icon10").innerHTML=`<img src="${data.forecast.forecastday[0].hour[9].condition.icon}"  >`
+                document.querySelector(".w10").innerHTML=data.forecast.forecastday[0].hour[9].temp_c+"°C"
+                document.querySelector(".rainS10").innerHTML=data.forecast.forecastday[0].hour[9].chance_of_rain+"%"
+
+                document.querySelector(".icon11").innerHTML=`<img src="${data.forecast.forecastday[0].hour[10].condition.icon}"  >`
+                document.querySelector(".w11").innerHTML=data.forecast.forecastday[0].hour[10].temp_c+"°C"
+                document.querySelector(".rainS11").innerHTML=data.forecast.forecastday[0].hour[10].chance_of_rain+"%"
+
+                document.querySelector(".icon12").innerHTML=`<img src="${data.forecast.forecastday[0].hour[11].condition.icon}"  >`
+                document.querySelector(".w12").innerHTML=data.forecast.forecastday[0].hour[11].temp_c+"°C"
+                document.querySelector(".rainS12").innerHTML=data.forecast.forecastday[0].hour[11].chance_of_rain+"%"
+
+                  document.querySelector(".icon13").innerHTML=`<img src="${data.forecast.forecastday[0].hour[12].condition.icon}"  >`
+                document.querySelector(".w13").innerHTML=data.forecast.forecastday[0].hour[12].temp_c+"°C"
+                document.querySelector(".rainS13").innerHTML=data.forecast.forecastday[0].hour[12].chance_of_rain+"%"
+
+                      document.querySelector(".icon14").innerHTML=`<img src="${data.forecast.forecastday[0].hour[13].condition.icon}"  >`
+                document.querySelector(".w14").innerHTML=data.forecast.forecastday[0].hour[13].temp_c+"°C"
+                document.querySelector(".rainS14").innerHTML=data.forecast.forecastday[0].hour[13].chance_of_rain+"%"
+
+                  document.querySelector(".icon15").innerHTML=`<img src="${data.forecast.forecastday[0].hour[14].condition.icon}"  >`
+                document.querySelector(".w15").innerHTML=data.forecast.forecastday[0].hour[14].temp_c+"°C"
+                document.querySelector(".rainS15").innerHTML=data.forecast.forecastday[0].hour[14].chance_of_rain+"%"
+
+                  document.querySelector(".icon16").innerHTML=`<img src="${data.forecast.forecastday[0].hour[15].condition.icon}"  >`
+                document.querySelector(".w16").innerHTML=data.forecast.forecastday[0].hour[15].temp_c+"°C"
+                document.querySelector(".rainS16").innerHTML=data.forecast.forecastday[0].hour[15].chance_of_rain+"%"
+
+                      document.querySelector(".icon17").innerHTML=`<img src="${data.forecast.forecastday[0].hour[16].condition.icon}"  >`
+                document.querySelector(".w17").innerHTML=data.forecast.forecastday[0].hour[16].temp_c+"°C"
+                document.querySelector(".rainS17").innerHTML=data.forecast.forecastday[0].hour[16].chance_of_rain+"%"
+
+                  document.querySelector(".icon18").innerHTML=`<img src="${data.forecast.forecastday[0].hour[17].condition.icon}"  >`
+                document.querySelector(".w18").innerHTML=data.forecast.forecastday[0].hour[17].temp_c+"°C"
+                document.querySelector(".rainS18").innerHTML=data.forecast.forecastday[0].hour[17].chance_of_rain+"%"
+
+                  document.querySelector(".icon19").innerHTML=`<img src="${data.forecast.forecastday[0].hour[18].condition.icon}"  >`
+                document.querySelector(".w19").innerHTML=data.forecast.forecastday[0].hour[18].temp_c+"°C"
+                document.querySelector(".rainS19").innerHTML=data.forecast.forecastday[0].hour[18].chance_of_rain+"%"
+
+                  document.querySelector(".icon20").innerHTML=`<img src="${data.forecast.forecastday[0].hour[19].condition.icon}"  >`
+                document.querySelector(".w20").innerHTML=data.forecast.forecastday[0].hour[19].temp_c+"°C"
+                document.querySelector(".rainS20").innerHTML=data.forecast.forecastday[0].hour[19].chance_of_rain+"%"
+
+                      document.querySelector(".icon21").innerHTML=`<img src="${data.forecast.forecastday[0].hour[20].condition.icon}"  >`
+                document.querySelector(".w21").innerHTML=data.forecast.forecastday[0].hour[20].temp_c+"°C"
+                document.querySelector(".rainS21").innerHTML=data.forecast.forecastday[0].hour[20].chance_of_rain+"%"
+
+                
+                      document.querySelector(".icon22").innerHTML=`<img src="${data.forecast.forecastday[0].hour[21].condition.icon}"  >`
+                document.querySelector(".w22").innerHTML=data.forecast.forecastday[0].hour[21].temp_c+"°C"
+                document.querySelector(".rainS22").innerHTML=data.forecast.forecastday[0].hour[21].chance_of_rain+"%"
+
+                
+                      document.querySelector(".icon23").innerHTML=`<img src="${data.forecast.forecastday[0].hour[22].condition.icon}"  >`
+                document.querySelector(".w23").innerHTML=data.forecast.forecastday[0].hour[22].temp_c+"°C"
+                document.querySelector(".rainS23").innerHTML=data.forecast.forecastday[0].hour[22].chance_of_rain+"%"
+
+                
+                      document.querySelector(".icon24").innerHTML=`<img src="${data.forecast.forecastday[0].hour[23].condition.icon}"  >`
+                document.querySelector(".w24").innerHTML=data.forecast.forecastday[0].hour[23].temp_c+"°C"
+                document.querySelector(".rainS24").innerHTML=data.forecast.forecastday[0].hour[23].chance_of_rain+"%"
+
+
+                // 5 Day forecast
+                //Day1
+                document.querySelector(".Maxtemp1").innerHTML=data.forecast.forecastday[0].day.maxtemp_c +"°C"
+                document.querySelector(".Mintemp1").innerHTML=data.forecast.forecastday[0].day.mintemp_c +"°C"
+                document.querySelector(".wind1mob").innerHTML=data.forecast.forecastday[0].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid1mob").innerHTML=data.forecast.forecastday[0].day.avghumidity+ "%"
+                document.querySelector(".rain1mob").innerHTML=data.forecast.forecastday[0].day.daily_chance_of_rain +"%"
+                //Day2
+                 document.querySelector(".Maxtemp2").innerHTML=data.forecast.forecastday[1].day.maxtemp_c +"°C"
+                document.querySelector(".Mintemp2").innerHTML=data.forecast.forecastday[1].day.mintemp_c +"°C"
+                document.querySelector(".wind2mob").innerHTML=data.forecast.forecastday[1].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid2mob").innerHTML=data.forecast.forecastday[1].day.avghumidity+ "%"
+                document.querySelector(".rain2mob").innerHTML=data.forecast.forecastday[1].day.daily_chance_of_rain +"%"
+                //Day3
+                 document.querySelector(".Maxtemp3").innerHTML=data.forecast.forecastday[2].day.maxtemp_c +"°C"
+                document.querySelector(".Mintemp3").innerHTML=data.forecast.forecastday[2].day.mintemp_c +"°C"
+                document.querySelector(".wind3mob").innerHTML=data.forecast.forecastday[2].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid3mob").innerHTML=data.forecast.forecastday[2].day.avghumidity+ "%"
+                document.querySelector(".rain3mob").innerHTML=data.forecast.forecastday[2].day.daily_chance_of_rain +"%"
+                //Day4
+                 document.querySelector(".Maxtemp4").innerHTML=data.forecast.forecastday[3].day.maxtemp_c +"°C"
+                document.querySelector(".Mintemp4").innerHTML=data.forecast.forecastday[3].day.mintemp_c +"°C"
+                document.querySelector(".wind4mob").innerHTML=data.forecast.forecastday[3].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid4mob").innerHTML=data.forecast.forecastday[3].day.avghumidity+ "%"
+                document.querySelector(".rain4mob").innerHTML=data.forecast.forecastday[3].day.daily_chance_of_rain +"%"
+                //Day5
+                 document.querySelector(".Maxtemp5").innerHTML=data.forecast.forecastday[4].day.maxtemp_c +"°C"
+                document.querySelector(".Mintemp5").innerHTML=data.forecast.forecastday[4].day.mintemp_c +"°C"
+                document.querySelector(".wind5mob").innerHTML=data.forecast.forecastday[4].day.maxwind_kph +"Km/h"
+                document.querySelector(".humid5mob").innerHTML=data.forecast.forecastday[4].day.avghumidity+ "%"
+                document.querySelector(".rain5mob").innerHTML=data.forecast.forecastday[4].day.daily_chance_of_rain +"%"
+
+                // Air quality
+                const aqiIndex=data.forecast.forecastday[0].day.air_quality["us-epa-index"]
+                  document.querySelector(".aqi-index").innerHTML=levels[aqiIndex] 
+                 document.querySelector(".Pm25").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["pm2_5"])+ "µg/m<sup>3</sup>"
+                  document.querySelector(".Pm100").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["pm10"])+"µg/m<sup>3</sup>"
+                   document.querySelector(".No21").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["no2"])+"µg/m<sup>3</sup>"
+                    document.querySelector(".O31").innerHTML=Math.round( data.forecast.forecastday[0].day.air_quality["o3"])+"µg/m<sup>3</sup>"
+               
+               
+            }
+
+
+            const button1=document.querySelector(".btn1")
+            const city1=document.querySelector(".search1")
+        
+            button1.addEventListener("click",function(e){
+                e.preventDefault()
+              
+                if(city1.value==""){
+                    alert("Enter valid Location")
+                }
+                else{document.querySelector(".CityandState1").innerHTML=city1.value.toUpperCase()
+                // console.log(  city1.value)
+                weatherapi(city1.value)
+                
+            }
+            })
+            
+            //Page Load
+            window.addEventListener("load",function(){
+                document.querySelector(".CityandState1").innerHTML="New Delhi"
+                weatherapi("New Delhi")
+                document.querySelector(".cityandstate2").innerHTML="New Delhi"
+                weatherapimob("New Delhi")
+
+            })
+
+            // Mobile section
+            const button2=document.querySelector(".btn2")
+            const city2=document.querySelector(".search2")
+            button2.addEventListener("click",function(e){
+                e.preventDefault()
+                
+                if(city2.value==""){
+                    alert("Enter valid Location")
+                }
+                else{document.querySelector(".cityandstate2").innerHTML=city2.value.toUpperCase()
+                    weatherapimob(city2.value)
+            }
+            })
+            
+         
+           
+    </script>
+</html>
